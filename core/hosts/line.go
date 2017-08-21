@@ -9,8 +9,12 @@ import (
 	"strings"
 	"time"
 
-	log "github.com/Sirupsen/logrus"
-	"github.com/shawn1m/overture/core/common"
+	"github.com/getlantern/golog"
+	"github.com/getlantern/overture/core/common"
+)
+
+var (
+	log = golog.LoggerFor("overture.hosts")
 )
 
 type hostsLine struct {
@@ -48,7 +52,7 @@ func newHostsLineList(data []byte) *hostsLineList {
 			if h := parseLine(l); h != nil {
 				err := hl.add(h)
 				if err != nil {
-					log.Warnf("Bad formatted hostsfile line: %s", err)
+					log.Debugf("Bad formatted hostsfile line: %s", err)
 				}
 			}
 		}(l)
@@ -127,7 +131,7 @@ func parseLine(line string) *hostsLine {
 	case ip.To16() != nil:
 		isIPv6 = true
 	default:
-		log.Warnf("Invalid IP address found in hostsfile: %s", a)
+		log.Debugf("Invalid IP address found in hostsfile: %s", a)
 		return nil
 	}
 

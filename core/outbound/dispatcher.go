@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	log "github.com/Sirupsen/logrus"
+	"github.com/getlantern/overture/core/common"
 	"github.com/miekg/dns"
-	"github.com/shawn1m/overture/core/common"
 )
 
 type Dispatcher struct {

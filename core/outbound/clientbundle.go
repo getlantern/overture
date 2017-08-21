@@ -1,14 +1,14 @@
-// Copyright (c) 2016 shawn1m. All rights reserved.
+// Copyright (c) 2016 getlantern. All rights reserved.
 // Use of this source code is governed by The MIT License (MIT) that can be
 // found in the LICENSE file.
 
 package outbound
 
 import (
+	"github.com/getlantern/overture/core/cache"
+	"github.com/getlantern/overture/core/common"
+	"github.com/getlantern/overture/core/hosts"
 	"github.com/miekg/dns"
-	"github.com/shawn1m/overture/core/cache"
-	"github.com/shawn1m/overture/core/common"
-	"github.com/shawn1m/overture/core/hosts"
 )
 
 type ClientBundle struct {

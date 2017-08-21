@@ -6,15 +6,19 @@
 package core
 
 import (
-	"github.com/shawn1m/overture/core/inbound"
-	"github.com/shawn1m/overture/core/outbound"
-	"github.com/shawn1m/overture/core/config"
+	"github.com/getlantern/overture/core/inbound"
+	"github.com/getlantern/overture/core/outbound"
 )
 
 // Initiate the server with config file
-func InitServer(configFilePath string) {
+func InitServer(configFilePath, socksAddr string) {
 
-	config := config.NewConfig(configFilePath)
+	config := NewConfig(configFilePath)
+
+	config.PrimaryDNS[0].Protocol = "tcp"
+	config.PrimaryDNS[0].SOCKS5Address = socksAddr
+	config.AlternativeDNS[0].SOCKS5Address = socksAddr
+	log.Debugf("Primary DNS : %q", config.PrimaryDNS)
 
 	// New dispatcher without ClientBundle, ClientBundle must be initiated when server is running
 	d := &outbound.Dispatcher{
@@ -31,8 +35,9 @@ func InitServer(configFilePath string) {
 		Dispatcher:  d,
 		MinimumTTL:  config.MinimumTTL,
 		RejectQtype: config.RejectQtype,
-		Hosts:       config.Hosts,
-		Cache:       config.Cache,
+		//Hosts:       "127.0.0.1 localhost",
+		Hosts: config.Hosts,
+		Cache: config.Cache,
 	}
 
 	s.Run()

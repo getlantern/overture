@@ -9,17 +9,20 @@ import (
 	"net"
 	"strings"
 
-	log "github.com/Sirupsen/logrus"
+	"github.com/getlantern/golog"
 	"github.com/miekg/dns"
+)
+
+var (
+	log = golog.LoggerFor("overture.common")
 )
 
 var ReservedIPNetworkList []*net.IPNet
 
-func init(){
+func init() {
 
 	ReservedIPNetworkList = getReservedIPNetworkList()
 }
-
 
 func IsIPMatchList(ip net.IP, ipnl []*net.IPNet, isLog bool) bool {
 

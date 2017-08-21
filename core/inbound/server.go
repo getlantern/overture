@@ -7,10 +7,10 @@ import (
 	"sync"
 
 	log "github.com/Sirupsen/logrus"
+	"github.com/getlantern/overture/core/cache"
+	"github.com/getlantern/overture/core/hosts"
+	"github.com/getlantern/overture/core/outbound"
 	"github.com/miekg/dns"
-	"github.com/shawn1m/overture/core/cache"
-	"github.com/shawn1m/overture/core/hosts"
-	"github.com/shawn1m/overture/core/outbound"
 )
 
 type Server struct {

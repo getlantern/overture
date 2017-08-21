@@ -7,10 +7,10 @@ import (
 	"time"
 
 	log "github.com/Sirupsen/logrus"
+	"github.com/getlantern/overture/core/cache"
+	"github.com/getlantern/overture/core/common"
+	"github.com/getlantern/overture/core/hosts"
 	"github.com/miekg/dns"
-	"github.com/shawn1m/overture/core/cache"
-	"github.com/shawn1m/overture/core/common"
-	"github.com/shawn1m/overture/core/hosts"
 	"golang.org/x/net/proxy"
 )
 
