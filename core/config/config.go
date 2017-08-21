@@ -2,7 +2,7 @@
 // Use of this source code is governed by The MIT License (MIT) that can be
 // found in the LICENSE file.
 
-package core
+package config
 
 import (
 	"bufio"
@@ -19,7 +19,6 @@ import (
 	"github.com/getlantern/overture/core/cache"
 	"github.com/getlantern/overture/core/common"
 	"github.com/getlantern/overture/core/hosts"
-	"github.com/getlantern/overture/core/outbound"
 )
 
 var (
